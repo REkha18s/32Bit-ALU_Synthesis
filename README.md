@@ -34,6 +34,23 @@ used.
 • The tool used for Synthesis is “Genus”. Hence, type “genus -gui” to open the tool.
 
 • Genus Script file with .tcl file Extension commands are executed one by one to synthesize the netlist.
+# PROGRAM
+read_libs /cadence/install/FOUNDRY-01/digital/90nm/dig/lib/slow.lib
+read_hdl alu_32bit.v
+elaborate
+read_sdc input_constraints.sdc 
+syn_generic
+report_area
+syn_map
+report_area
+syn_opt
+report_area 
+report_area > alu_32bit_area.txt
+report_power > alu_32bit_power.txt
+write_hdl > alu_32bit_netlist.v
+gui_show
+# PROGRAM
+
 
 #### Synthesis RTL Schematic :
 ![Screenshot (111)](https://github.com/user-attachments/assets/505b180a-76a0-4046-a5cb-51cb1126c504)
